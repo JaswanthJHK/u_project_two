@@ -1,0 +1,20 @@
+import 'package:uuid/uuid.dart';
+
+const uuid = Uuid();
+
+enum Catogory { food, travel, leisure, work }
+
+class ExpenseModel {
+  ExpenseModel({
+    required this.title,
+    required this.amount,
+    required this.date,
+    required this.catogory,
+  }) : id = uuid.v4();
+
+  final String id;
+  final String title;
+  final double amount;
+  final DateTime date;
+  final Catogory catogory;
+}
