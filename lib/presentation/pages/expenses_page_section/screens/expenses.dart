@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_expense_tracker/main.dart';
 import 'package:udemy_expense_tracker/model/expense_model.dart';
+import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expenses_list_widget.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -19,9 +20,9 @@ class _ExpensesState extends State<Expenses> {
     ),
     ExpenseModel(
       title: "Cinema",
-      amount: 499,
+      amount: 299,
       date: DateTime.now(),
-      catogory: Catogory.work,
+      catogory: Catogory.leisure,
     ),
     // ExpenseModel(
     //   title: "Flutter Course",
@@ -29,15 +30,29 @@ class _ExpensesState extends State<Expenses> {
     //   date: DateTime.now(),
     //   catogory: Catogory.leisure,
     // ),
-
   ];
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Expense Tracker"),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
-          Text("blablaaa"),
-          Text("expensess......."),
+          const Text("Expenses"),
+          Expanded(child: ExpensesList(expenses: _registeredExpenses)),
+          FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: Colors.grey[400],
+            child: Icon(
+              Icons.add,
+              color: Colors.grey[800],
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+          )
         ],
       ),
     );
