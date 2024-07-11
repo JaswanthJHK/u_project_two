@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_expense_tracker/main.dart';
 import 'package:udemy_expense_tracker/model/expense_model.dart';
+import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expense_bottom_sheet.dart';
 import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expenses_list_widget.dart';
 
 class Expenses extends StatefulWidget {
@@ -24,13 +24,21 @@ class _ExpensesState extends State<Expenses> {
       date: DateTime.now(),
       catogory: Catogory.leisure,
     ),
-    // ExpenseModel(
-    //   title: "Flutter Course",
-    //   amount: 299,
-    //   date: DateTime.now(),
-    //   catogory: Catogory.leisure,
-    // ),
+    ExpenseModel(
+      title: "Trip",
+      amount: 999,
+      date: DateTime.now(),
+      catogory: Catogory.travel,
+    ),
   ];
+
+  void _openAddExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) =>const ExpenseBottomSheet(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +51,7 @@ class _ExpensesState extends State<Expenses> {
           const Text("Expenses"),
           Expanded(child: ExpensesList(expenses: _registeredExpenses)),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: _openAddExpenseOverlay,
             backgroundColor: Colors.grey[400],
             child: Icon(
               Icons.add,
