@@ -62,6 +62,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
         catogory: _selectedCatogory,
       ),
     );
+    Navigator.pop(context);
   }
 
   @override
@@ -153,7 +154,8 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
                   onPressed: _submitExpenseDataForm,
                   child: const Text("Save Expense"))
             ],
-          )
+          ),
+          
         ],
       ),
     );
