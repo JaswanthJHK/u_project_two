@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_expense_tracker/model/expense_model.dart';
 import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expense_bottom_sheet.dart';
+import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expense_item_widget.dart';
 import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expenses_list_widget.dart';
+import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/widgets/expense_bottom_sheet.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -11,32 +13,21 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<ExpenseModel> _registeredExpenses = [
-    ExpenseModel(
-      title: "Flutter Course",
-      amount: 499,
-      date: DateTime.now(),
-      catogory: Catogory.work,
-    ),
-    ExpenseModel(
-      title: "Cinema",
-      amount: 299,
-      date: DateTime.now(),
-      catogory: Catogory.leisure,
-    ),
-    ExpenseModel(
-      title: "Trip",
-      amount: 999,
-      date: DateTime.now(),
-      catogory: Catogory.travel,
-    ),
-  ];
+  final List<ExpenseModel> _registeredExpenses = [ ];
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) =>const ExpenseBottomSheet(),
+      builder: (ctx) => ExpenseBottomSheet(
+        onAddExpense: _addExpense,
+      ),
     );
+  }
+
+  void _addExpense(ExpenseModel expense) {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
   }
 
   @override

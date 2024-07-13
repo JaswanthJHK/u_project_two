@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:udemy_expense_tracker/model/expense_model.dart';
 
 class ExpenseBottomSheet extends StatefulWidget {
-  const ExpenseBottomSheet({super.key});
+  const ExpenseBottomSheet({super.key, required this.onAddExpense});
+  final Function(ExpenseModel expense) onAddExpense;
 
   @override
   State<ExpenseBottomSheet> createState() => _ExpenseBottomSheetState();
@@ -29,10 +30,38 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
   }
 
   void _submitExpenseDataForm() {
-    final enterdAmount = double.parse(_amountController.text);
-    if(_titleController.text.trim().isEmpty){
+    final enterdAmount = double.tryParse(_amountController.text);
 
+    final amountIsInvalid = enterdAmount == null || enterdAmount <= 0;
+    if (_titleController.text.trim().isEmpty ||
+        amountIsInvalid ||
+        _selectedDate == null) {
+      showDialog(
+        context: context,
+        builder: (ctxt) {
+          return AlertDialog(
+            title: const Text("Ivalid Input"),
+            content: const Text(
+                "Please make sure a valid Title, Amount, Date and Catogory was entered...!"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("Okay"),
+              ),
+            ],
+          );
+        },
+      );
+      return;
     }
+    widget.onAddExpense(
+      ExpenseModel(
+        title: _titleController.text,
+        amount: enterdAmount,
+        date: _selectedDate!,
+        catogory: _selectedCatogory,
+      ),
+    );
   }
 
   @override
