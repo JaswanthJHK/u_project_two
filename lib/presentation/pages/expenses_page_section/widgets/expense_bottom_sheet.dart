@@ -13,7 +13,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
   final TextEditingController _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
-  Catogory _selectedCatogory = Catogory.leisure;
+  Category _selectedCatogory = Category.leisure;
 
   _presentDatePicker() async {
     final now = DateTime.now();
@@ -59,7 +59,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
         title: _titleController.text,
         amount: enterdAmount,
         date: _selectedDate!,
-        catogory: _selectedCatogory,
+        category: _selectedCatogory,
       ),
     );
     Navigator.pop(context);
@@ -126,7 +126,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
             children: [
               DropdownButton(
                 value: _selectedCatogory,
-                items: Catogory.values
+                items: Category.values
                     .map(
                       (catogory) => DropdownMenuItem(
                         value: catogory,
@@ -155,7 +155,6 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
                   child: const Text("Save Expense"))
             ],
           ),
-          
         ],
       ),
     );
