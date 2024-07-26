@@ -31,16 +31,21 @@ class _DummyScreenState extends State<DummyScreen>
         title: const Text("Nothing..."),
         centerTitle: true,
       ),
-      body: Center(
-        child: RotationTransition(
-          turns: _animation,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: FlutterLogo(
-              size: 150,
+      body: Column(
+        children: [
+          Center(
+            child: RotationTransition(
+              turns: _animation,
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: FlutterLogo(
+                  size: 150,
+                ),
+              ),
             ),
           ),
-        ),
+          Text("nothing"),
+        ],
       ),
     );
   }
