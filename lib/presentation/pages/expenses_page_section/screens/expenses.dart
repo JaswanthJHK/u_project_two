@@ -98,7 +98,7 @@ class _ExpensesState extends State<Expenses> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title:const Text(
           "Expense Tracker",
           // style: TextStyle(
           //     fontSize: 30,

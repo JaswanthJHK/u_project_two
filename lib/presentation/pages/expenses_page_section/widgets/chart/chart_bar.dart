@@ -11,7 +11,7 @@ class ChartBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkMode =
-        MediaQuery.of(context).platformBrightness == Brightness.dark;
+        MediaQuery.of(context).platformBrightness == Brightness.dark; // this make the theme according the device's default theme 
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4),

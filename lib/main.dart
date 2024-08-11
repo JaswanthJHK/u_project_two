@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:udemy_expense_tracker/presentation/pages/expenses_page_section/screens/expenses.dart';
+import 'package:flutter/services.dart';
 
 var kColor = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 130, 130, 130),
@@ -9,7 +10,16 @@ var kBgColor = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 5, 99, 125),
 );
 void main() {
-  runApp(const MyApp());
+
+// this is how setting up the app only show in protrait mode not landscape 
+
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((fn) {
+    runApp(const MyApp());
+  });
+//------------------------------------------------------------------------ to set a certain screen orientation add the import 'package:flutter/services.dart';
 }
 
 class MyApp extends StatelessWidget {
