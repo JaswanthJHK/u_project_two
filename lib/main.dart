@@ -13,12 +13,12 @@ void main() {
 
 // this is how setting up the app only show in protrait mode not landscape 
 
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((fn) {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  // ]).then((fn) {
     runApp(const MyApp());
-  });
+  
 //------------------------------------------------------------------------ to set a certain screen orientation add the import 'package:flutter/services.dart';
 }
 

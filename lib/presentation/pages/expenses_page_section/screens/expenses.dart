@@ -121,9 +121,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          _registeredExpenses.isEmpty
-              ? const SizedBox()
-              : Chart(expenses: _registeredExpenses),
+         Chart(expenses: _registeredExpenses),
           Expanded(child: mainContent),
           FloatingActionButton(
             onPressed: _openAddExpenseOverlay,
