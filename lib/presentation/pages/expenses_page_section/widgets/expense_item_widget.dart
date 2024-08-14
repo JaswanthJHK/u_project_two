@@ -27,7 +27,7 @@ class ExpenseItem extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '\u20B9 ${expense.amount.toStringAsFixed(2)}',
+                  '\u20B9  ${expense.amount.toStringAsFixed(2)}',
                 ), // here the toStringAsFixed show only two digits after point value
                 // like 12.34 instead of 12.345444
                 const Spacer(),

@@ -44,7 +44,7 @@ class _DummyScreenState extends State<DummyScreen>
               ),
             ),
           ),
-          Text("nothing"),
+         const Text("nothing"),
         ],
       ),
     );

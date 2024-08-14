@@ -13,32 +13,7 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<ExpenseModel> _registeredExpenses = [
-    ExpenseModel(
-      title: "Burger",
-      amount: 239,
-      date: DateTime(11, 11, 2022),
-      category: Category.food,
-    ),
-    ExpenseModel(
-      title: "Flutter",
-      amount: 539,
-      date: DateTime(11, 11, 2022),
-      category: Category.work,
-    ),
-    ExpenseModel(
-      title: "trip",
-      amount: 339,
-      date: DateTime(11, 11, 2022),
-      category: Category.travel,
-    ),
-    ExpenseModel(
-      title: "trip",
-      amount: 639,
-      date: DateTime(11, 11, 2022),
-      category: Category.leisure,
-    ),
-  ];
+  final List<ExpenseModel> _registeredExpenses = [];
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
@@ -80,9 +55,10 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = Center(
       child: Text(
-        "No expenses founnd.\n Start adding some!",
+        "No expenses found.\n Start adding some!",
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
@@ -97,45 +73,66 @@ class _ExpensesState extends State<Expenses> {
       );
     }
     return Scaffold(
-      appBar: AppBar(
-        title:const Text(
-          "Expense Tracker",
-          // style: TextStyle(
-          //     fontSize: 30,
-          //     fontWeight: FontWeight.w700,
-          //     color: Colors.grey[800]),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
+        appBar: AppBar(
+          title: const Text(
+            "Expense Tracker",
+            // style: TextStyle(
+            //     fontSize: 30,
+            //     fontWeight: FontWeight.w700,
+            //     color: Colors.grey[800]
+            // ),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DummyScreen(),
+                    builder: (context) => const DummyScreen(),
                   ),
                 );
               },
-              icon: Icon(Icons.next_plan))
-        ],
-      ),
-      body: Column(
-        children: [
-         Chart(expenses: _registeredExpenses),
-          Expanded(child: mainContent),
-          FloatingActionButton(
-            onPressed: _openAddExpenseOverlay,
-            // backgroundColor: Colors.grey[400],
-            child: Icon(
-              Icons.add,
-              color: Colors.grey[800],
-            ),
-          ),
-          const SizedBox(
-            height: 40,
-          )
-        ],
-      ),
-    );
+              icon: const Icon(
+                Icons.next_plan,
+              ),
+            )
+          ],
+        ),
+        body: width < 600 //  checking the screen size and making the difference according the screen size
+            ? Column(
+                children: [
+                  Chart(expenses: _registeredExpenses),
+                  Expanded(child: mainContent),
+                  FloatingActionButton(
+                    onPressed: _openAddExpenseOverlay,
+                    // backgroundColor: Colors.grey[400],
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                ],
+              )
+            : Row(
+                children: [
+                  Expanded(child: Chart(expenses: _registeredExpenses)),
+                  Expanded(child: mainContent),
+                  FloatingActionButton(
+                    onPressed: _openAddExpenseOverlay,
+                    // backgroundColor: Colors.grey[400],
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                ],
+              ));
   }
 }

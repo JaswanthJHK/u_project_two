@@ -42,7 +42,8 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
           return AlertDialog(
             title: const Text("Ivalid Input"),
             content: const Text(
-                "Please make sure a valid Title, Amount, Date and Catogory was entered...!"),
+              "Please make sure a valid Title, Amount, Date and Catogory was entered...!",
+            ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -148,7 +149,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
               const Spacer(),
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text("Cancel"),
+                child: const Text("Cancel?"),
               ),
               ElevatedButton(
                   onPressed: _submitExpenseDataForm,
