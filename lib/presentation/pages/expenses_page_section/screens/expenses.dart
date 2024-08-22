@@ -20,8 +20,10 @@ class _ExpensesState extends State<Expenses> {
       context: context,
       //  isScrollControlled: true,
 
-      builder: (ctx) => ExpenseBottomSheet(
-        onAddExpense: _addExpense,
+      builder: (ctx) => SingleChildScrollView(
+        child: ExpenseBottomSheet(
+          onAddExpense: _addExpense,
+        ),
       ),
     );
   }
@@ -99,7 +101,8 @@ class _ExpensesState extends State<Expenses> {
             )
           ],
         ),
-        body: width < 600 //  checking the screen size and making the difference according the screen size
+        body: width <
+                600 //  checking the screen size and making the difference according the screen size
             ? Column(
                 children: [
                   Chart(expenses: _registeredExpenses),
