@@ -82,12 +82,12 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
         print(constraints.maxWidth);
         //   print(constraints.minHeight);
         print(constraints.maxHeight);
-        final width = constraints.maxWidth;
+        final width = constraints.maxWidth;  //  here checking the maxwidth and rest changes are according the width changes
         return Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              if (width >= 600)
+              if (width >= 600)   //here checking the width 
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -124,7 +124,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
               const SizedBox(
                 height: 10,
               ),
-              if (width >= 600)
+              if (width >= 600)   //here checking the width 
                 Row(
                   children: [
                     DropdownButton(
@@ -206,7 +206,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
               const SizedBox(
                 height: 20,
               ),
-              if (width >= 600)
+              if (width >= 600)   //here checking the width 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
